@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>2026 關西全攻略 - 完整行程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --primary: #404040; --accent: #FF801E; --secondary: #D6D8D9; --bg: #FFFFFF; }
+        body { background-color: var(--bg); color: var(--primary); font-family: -apple-system, "Noto Sans TC", "Microsoft JhengHei", sans-serif; scroll-behavior: smooth; padding-bottom: 120px; }
+        
+        .app-header { background: var(--primary); color: white; padding: 25px 20px; position: sticky; top: 0; z-index: 100; border-bottom: 4px solid var(--accent); }
+        .badge { background: var(--accent); color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; }
+        
+        .day-card { border-bottom: 8px solid #F3F4F6; padding: 30px 20px; scroll-margin-top: 100px; }
+        .day-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 20px; }
+        .day-num { font-size: 36px; font-weight: 900; color: var(--primary); font-style: italic; }
+        .day-title { font-size: 18px; font-weight: bold; color: #444; }
+
+        .flight-card { background: linear-gradient(135deg, #404040 0%, #2D2D2D 100%); color: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .flight-main { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; }
+        .flight-time { font-size: 26px; font-weight: 900; }
+        .flight-arrow { flex-grow: 1; height: 1px; background: rgba(255,255,255,0.3); margin: 0 15px; position: relative; }
+        .flight-arrow::after { content: '✈️'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 14px; }
+
+        .section-box { background: #F8F9FA; border-radius: 12px; padding: 18px; margin-bottom: 15px; border-left: 5px solid var(--secondary); }
+        .section-title { font-size: 14px; font-weight: 800; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; color: var(--primary); }
+        .section-title i { color: var(--accent); }
+        
+        .list-item { font-size: 13.5px; line-height: 1.7; margin-bottom: 10px; }
+        .list-item b { color: var(--accent); }
+
+        .btn-link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: bold; color: var(--primary); border: 1px solid var(--secondary); padding: 6px 14px; border-radius: 20px; text-decoration: none; margin-top: 8px; background: white; transition: all 0.2s; }
+        .btn-link:active { transform: scale(0.95); background: #f0f0f0; }
+        .btn-link.accent { border-color: var(--accent); color: var(--accent); }
+
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 12px 0 calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid #EEE; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
+        .nav-item { color: #AAA; text-decoration: none; text-align: center; font-size: 10px; flex: 1; transition: 0.3s; }
+        .nav-item.active { color: var(--accent); transform: translateY(-2px); }
+        .nav-item b { display: block; font-size: 18px; margin-bottom: 2px; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="flex justify-between items-start">
+            <div>
+                <div class="text-[10px] tracking-[0.3em] opacity-70 mb-1">KANSAI TRAVEL LOG</div>
+                <h1 class="text-2xl font-black">2026 關西全攻略</h1>
+            </div>
+            <div class="text-right">
+                <span class="badge">長榮航空 EVA AIR</span>
+                <div class="text-[10px] mt-2 font-mono tracking-tighter opacity-80">2026.06.06 - 06.11</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- DAY 1 -->
+    <section id="day1" class="day-card">
+        <div class="day-header">
+            <span class="day-num">01</span>
+            <span class="day-title">06/06 台北 ➔ 大阪：熱鬧啟程</span>
+        </div>
+        
+        <div class="flight-card">
+            <div class="flex justify-between items-center text-[11px] font-bold border-b border-white/20 pb-2 mb-3">
+                <span>BR177 | 桃園 T2 (11:05) ➔ 關西 T1 (15:00)</span>
+            </div>
+            <div class="flight-main">
+                <div class="text-center">
+                    <div class="text-[10px] opacity-60">TPE</div>
+                    <div class="flight-time">11:05</div>
+                </div>
+                <div class="flight-arrow"></div>
+                <div class="text-center">
+                    <div class="text-[10px] opacity-60">KIX</div>
+                    <div class="flight-time">15:00</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🚌 交通指南</div>
+            <div class="list-item">抵達關西機場後，至南海電鐵櫃檯購買 <b>Rapi:t 特急</b> 前往「難波站」。車程約 38 分鐘，空間寬敞適合攜帶行李。</div>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">📍 景點：心齋橋 & 道頓堀</div>
+            <div class="list-item">大阪最具代表性的購物區。第一晚先到道頓堀與<b>格力高跑跑人</b>合照，並體驗熱鬧的河岸夜景。</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Dotonbori+Glico+Sign" target="_blank" class="btn-link">🗺️ 導航：道頓堀跑跑人</a>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🍴 晚餐推薦</div>
+            <div class="list-item"><b>千房大阪燒：</b>道頓堀著名的連鎖店，推薦「道頓堀燒」，師傅現場擠美乃滋的表演非常精彩。</div>
+            <div class="list-item"><b>本家章魚燒：</b>位於河畔，以章魚塊巨大著稱，是道地的大阪風味。</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Chibo+Dotonbori" target="_blank" class="btn-link accent">🍽️ 餐廳導航：千房</a>
+        </div>
+    </section>
+
+    <!-- DAY 2 -->
+    <section id="day2" class="day-card">
+        <div class="day-header">
+            <span class="day-num">02</span>
+            <span class="day-title">06/07 大阪：環球影城全日</span>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🚌 交通指南</div>
+            <div class="list-item">從「難波」搭乘 <b>阪神難波線</b> 至「西九條」，轉乘 <b>JR 櫻島線</b> 至「Universal City」。</div>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🎡 景點：USJ 日本環球影城</div>
+            <div class="list-item">2026年預期<b>任天堂世界（大金剛園區）</b>已成熟。務必提早下載 APP 抽整理券。重點關注哈利波特、瑪利歐與期間限定設施。</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan" target="_blank" class="btn-link">🗺️ 導航：環球影城</a>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🍴 園區美食</div>
+            <div class="list-item"><b>奇諾比奧咖啡店：</b>任天堂園區內最可愛的餐廳，推薦「提拉米蘇方塊」。</div>
+            <div class="list-item"><b>三根掃帚：</b>哈利波特園區必喝奶油啤酒，也有飽足感滿分的烤雞餐點。</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kinopio's+Cafe" target="_blank" class="btn-link accent">🍽️ 餐廳導航：奇諾比奧</a>
+        </div>
+    </section>
+
+    <!-- DAY 3 -->
+    <section id="day3" class="day-card">
+        <div class="day-header">
+            <span class="day-num">03</span>
+            <span class="day-title">06/08 奈良：與神之使者相遇</span>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🚌 交通指南</div>
+            <div class="list-item">於「大阪難波站」搭乘 <b>近鐵奈良線</b>（快急以上），約 40 分鐘即可抵達「近鐵奈良站」，離景點比 JR 站更近。</div>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🦌 景點：奈良公園 & 東大寺</div>
+            <div class="list-item"><b>奈良公園：</b>廣大的綠地有上千隻鹿，購買鹿仙貝時請注意安全。</div>
+            <div class="list-item"><b>東大寺：</b>參觀震撼的巨大青銅大佛，是世界遺產。</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Todai-ji+Temple" target="_blank" class="btn-link">🗺️ 導航：東大寺</a>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🍴 奈良美食</div>
+            <div class="list-item"><b>志津香釜飯：</b>人氣最高的炊飯名店，鍋底的鍋巴香氣是其精華（建議開門前半小時排隊）。</div>
+            <div class="list-item"><b>中谷堂：</b>現場搗麻糬表演，口感極度柔軟。</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Shizuka+Nara+Park" target="_blank" class="btn-link accent">🍽️ 餐廳導航：志津香</a>
+        </div>
+    </section>
+
+    <!-- DAY 4 -->
+    <section id="day4" class="day-card">
+        <div class="day-header">
+            <span class="day-num">04</span>
+            <span class="day-title">06/09 京都：世界遺產深度遊</span>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🚌 交通指南</div>
+            <div class="list-item">從大阪出發可搭乘 <b>京阪電車</b>（適合前往伏見稻荷）或 <b>阪急電鐵</b>（適合前往四條河原町/清水寺區域）。</div>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">⛩️ 景點：伏見稻荷 & 清水寺</div>
+            <div class="list-item"><b>伏見稻荷大社：</b>壯觀的千本鳥居是必拍景點。</div>
+            <div class="list-item"><b>清水寺：</b>漫步產寧坂與二年坂，參觀壯麗的清水舞台。</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera" target="_blank" class="btn-link">🗺️ 導航：清水寺</a>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🍴 京都美食</div>
+            <div class="list-item"><b>名代豬排 Katsukura：</b>提供高品質的三元豬或熟成豬肉，米飯與味噌湯可續加。</div>
+            <div class="list-item"><b>伊藤久右衛門：</b>在古都品嚐抹茶聖代、抹茶蕎麥麵，極致享受。</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Katsukura+Kyoto+Sanjo" target="_blank" class="btn-link accent">🍽️ 餐廳導航：名代豬排</a>
+        </div>
+    </section>
+
+    <!-- DAY 5 -->
+    <section id="day5" class="day-card">
+        <div class="day-header">
+            <span class="day-num">05</span>
+            <span class="day-title">06/10 嵐山：自然的靜謐時光</span>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🚌 交通指南</div>
+            <div class="list-item">從「京都站」搭乘 <b>JR 嵯峨野線</b> 直達；或從四條大宮搭乘路面電車 <b>嵐電</b>。</div>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🎋 景點：竹林小徑 & 渡月橋</div>
+            <div class="list-item">在清晨人少時漫步竹林，隨後前往<b>渡月橋</b>欣賞河景。若有時間可預約<b>嵯峨野小火車</b>。</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Arashiyama+Bamboo+Grove" target="_blank" class="btn-link">🗺️ 導航：嵐山竹林</a>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🍴 嵐山美食</div>
+            <div class="list-item"><b>廣川鰻魚飯：</b>京都頂級鰻魚飯，務必提前透過官方網站預約，以免現場落空。</div>
+            <div class="list-item"><b>% Arabica Coffee：</b>在渡月橋旁喝一杯拿鐵，感受嵐山的悠閒氛圍。</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Unagi+Hirokawa" target="_blank" class="btn-link accent">🍽️ 餐廳導航：廣川</a>
+        </div>
+    </section>
+
+    <!-- DAY 6 -->
+    <section id="day6" class="day-card">
+        <div class="day-header">
+            <span class="day-num">06</span>
+            <span class="day-title">06/11 關西機場 ➔ 台北</span>
+        </div>
+
+        <div class="flight-card">
+            <div class="flex justify-between items-center text-[11px] font-bold border-b border-white/20 pb-2 mb-3">
+                <span>BR178 | 關西 T1 (11:10) ➔ 桃園 T2 (13:20)</span>
+            </div>
+            <div class="flight-main">
+                <div class="text-center">
+                    <div class="text-[10px] opacity-60">KIX</div>
+                    <div class="flight-time">11:10</div>
+                </div>
+                <div class="flight-arrow"></div>
+                <div class="text-center">
+                    <div class="text-[10px] opacity-60">TPE</div>
+                    <div class="flight-time">13:20</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">🚌 交通指南</div>
+            <div class="list-item">由於是上午 11:10 的飛機，建議 08:30 前抵達機場。可選擇 <b>JR Haruka</b>（適合從京都/新大阪出發）或 <b>南海 Rapi:t</b>（適合從難波出發）。</div>
+        </div>
+
+        <div class="section-box" style="border-left-color: var(--accent);">
+            <div class="section-title">🛍️ 最後採買</div>
+            <div class="list-item">關西機場內有充足的免稅店，適合購買 Royce 生巧克力、白色戀人等伴手禮。</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" target="_blank" class="btn-link">🗺️ 導航：關西機場</a>
+        </div>
+    </section>
+
+    <nav class="bottom-nav">
+        <a href="#day1" class="nav-item"><b>1</b>D1</a>
+        <a href="#day2" class="nav-item"><b>2</b>D2</a>
+        <a href="#day3" class="nav-item"><b>3</b>D3</a>
+        <a href="#day4" class="nav-item"><b>4</b>D4</a>
+        <a href="#day5" class="nav-item"><b>5</b>D5</a>
+        <a href="#day6" class="nav-item"><b>6</b>D6</a>
+    </nav>
+
+    <script>
+        // 簡單的導航切換效果
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 監聽滾動更新底部導航
+        window.addEventListener('scroll', () => {
+            let current = "";
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
