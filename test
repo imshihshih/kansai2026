@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>KANSAI 2026 | 智慧導覽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --dark: #404040; --orange: #FF801E; --grey: #D6D8D9; --white: #FFFFFF; }
+        body { background-color: #F8F9FA; color: var(--dark); font-family: -apple-system, "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+        .header { background: var(--dark); border-bottom: 4px solid var(--orange); padding: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .day-card { background: var(--white); border-radius: 20px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid var(--grey); }
+        .day-header { background: var(--dark); color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .section-title { color: var(--orange); font-weight: 900; font-size: 12px; letter-spacing: 1px; margin-bottom: 12px; border-bottom: 1px solid var(--grey); padding-bottom: 4px; display: block; }
+        .content-box { padding: 20px; }
+        .item-title { font-size: 18px; font-weight: 800; color: #111; margin-bottom: 6px; }
+        .item-desc { font-size: 13px; color: #555; line-height: 1.7; margin-bottom: 12px; }
+        .map-button { background: var(--dark); color: white !important; padding: 12px 20px; border-radius: 10px; font-size: 14px; font-weight: bold; text-align: center; display: block; text-decoration: none !important; transition: all 0.2s; border: 2px solid transparent; margin-bottom: 15px; }
+        .map-button:active { background: var(--orange); transform: scale(0.97); }
+        .map-button::before { content: '📍 '; }
+        .transport-guide { background: #F3F4F6; border-radius: 12px; padding: 15px; margin-bottom: 15px; border-left: 5px solid var(--orange); }
+        .transport-step { font-size: 13px; margin-bottom: 8px; position: relative; padding-left: 20px; }
+        .transport-step::before { content: '•'; position: absolute; left: 5px; color: var(--orange); font-weight: bold; }
+        .nav-bar { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; padding: 10px 0 calc(10px + env(safe-area-inset-bottom)); border-top: 1px solid var(--grey); z-index: 1000; }
+        .nav-item { text-align: center; color: #999; text-decoration: none; font-size: 10px; font-weight: bold; }
+        .nav-item.active { color: var(--orange); }
+        .nav-item b { font-size: 18px; display: block; font-style: italic; line-height: 1; }
+        .flight-box { background: #FFF8F1; border: 1px dashed var(--orange); padding: 10px; border-radius: 8px; margin-bottom: 15px; }
+    </style>
+</head>
+<body class="pb-24">
+
+    <header class="header flex justify-between items-center">
+        <div>
+            <h1 class="text-xl font-black italic text-[#FF801E] tracking-tighter">KANSAI 2026</h1>
+            <p class="text-[9px] text-white opacity-60 tracking-widest">PRECISION TRAVEL LOGISTICS</p>
+        </div>
+        <div id="airline-tag" class="text-right text-white">
+            </div>
+    </header>
+
+    <main id="itinerary-container" class="p-4 max-w-2xl mx-auto">
+        </main>
+
+    <nav id="nav-container" class="nav-bar">
+        </nav>
+
+    <script>
+        // 【行程資料控制中心】
+        // 日後只需修改這裡的文字，頁面就會自動更新！
+        const itineraryData = {
+            airline: "EVA AIR",
+            days: [
+                {
+                    id: "day1",
+                    dayNum: "01",
+                    title: "大阪難波",
+                    date: "06/06 Sat",
+                    flight: { info: "長榮 BR177", time: "11:05 ➔ 14:45" },
+                    transport: [
+                        "抵達關西機場(KIX)入境後，前往車站大樓2樓。",
+                        "搭乘 <b>南海電鐵 Rapi:t 特急</b>，終點即為 <b>難波站</b>。",
+                        "出站後，沿著地下街或導航步行至飯店。"
+                    ],
+                    mainMap: { label: "導航：南海難波站", url: "https://maps.google.com" },
+                    spots: [
+                        { name: "道頓堀跑跑人 Glico", desc: "這塊著名的霓虹看板是大阪旅遊的靈魂。目前是第六代，象徵著活力。", url: "https://maps.google.com" }
+                    ],
+                    food: [
+                        { name: "松阪牛燒肉 M (法善寺店)", desc: "以細膩油花與甜美香氣聞名，推薦特選拼盤。", url: "https://maps.google.com" },
+                        { name: "蟹道樂 (道頓堀本店)", desc: "經典螃蟹專門店，巨大轉動螃蟹是其標誌。", url: "https://maps.google.com" }
+                    ]
+                },
+                {
+                    id: "day2",
+                    dayNum: "02",
+                    title: "嵐山金閣",
+                    date: "06/07 Sun",
+                    transport: [
+                        "<b>難波 ➔ 嵐山：</b>搭地鐵到梅田，轉阪急京都線至桂站換車。",
+                        "<b>嵐山 ➔ 金閣寺：</b>搭嵐電至北野白梅町，換乘204/205巴士。"
+                    ],
+                    spots: [
+                        { name: "嵐山竹林小徑", desc: "充滿靈氣的綠色隧道，早晨前來能避開人群。", url: "https://maps.google.com" },
+                        { name: "金閣寺", desc: "外牆覆蓋純金箔，在陽光下與池中倒影形成美景。", url: "https://maps.google.com" }
+                    ],
+                    food: [
+                        { name: "廣川鰻魚飯", desc: "米其林一星，鰻魚肉質蓬鬆，極度推薦先行預約。", url: "https://maps.google.com" }
+                    ]
+                }
+                // ... 您可以依照此格式繼續增加 Day 3, 4, 5...
+            ]
+        };
+
+        // 【渲染引擎】
+        function renderItinerary() {
+            const container = document.getElementById('itinerary-container');
+            const navContainer = document.getElementById('nav-container');
+            const airlineTag = document.getElementById('airline-tag');
+
+            airlineTag.innerHTML = `<span class="text-[10px] font-bold border border-orange-500 px-2 py-1 rounded">${itineraryData.airline}</span>`;
+
+            itineraryData.days.forEach((day, index) => {
+                // 生成導航
+                const navHtml = `<a href="#${day.id}" class="nav-item"><b>${day.dayNum}</b>${day.title.substring(0,2)}</a>`;
+                navContainer.insertAdjacentHTML('beforeend', navHtml);
+
+                // 生成行程卡片
+                let cardHtml = `
+                    <section id="${day.id}" class="day-card">
+                        <div class="day-header" style="${index === itineraryData.days.length -1 ? 'background:var(--orange)' : ''}">
+                            <span class="text-xl font-black italic">DAY ${day.dayNum} - ${day.title}</span>
+                            <span class="text-[10px] font-bold opacity-60">${day.date}</span>
+                        </div>
+                        <div class="content-box">
+                            ${day.flight ? `
+                                <div class="flight-box">
+                                    <div class="flex justify-between text-xs font-bold text-orange-600">
+                                        <span>${day.flight.info}</span><span>${day.flight.time}</span>
+                                    </div>
+                                </div>
+                            ` : ''}
+
+                            <span class="section-title">🚆 交通詳細指引</span>
+                            <div class="transport-guide">
+                                ${day.transport.map(step => `<div class="transport-step">${step}</div>`).join('')}
+                            </div>
+                            ${day.mainMap ? `<a href="${day.mainMap.url}" target="_blank" class="map-button">${day.mainMap.label}</a>` : ''}
+
+                            <div class="info-item mt-6">
+                                <span class="section-title">📍 景點簡介</span>
+                                ${day.spots.map(spot => `
+                                    <div class="item-title">${spot.name}</div>
+                                    <div class="item-desc">${spot.desc}</div>
+                                    <a href="${spot.url}" target="_blank" class="map-button">導航：${spot.name}</a>
+                                `).join('')}
+                            </div>
+
+                            ${day.food ? `
+                                <div class="info-item">
+                                    <span class="section-title">🍴 餐廳簡介</span>
+                                    ${day.food.map(f => `
+                                        <div class="item-title">${f.name}</div>
+                                        <div class="item-desc">${f.desc}</div>
+                                        <a href="${f.url}" target="_blank" class="map-button">導航：${f.name}</a>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </section>
+                `;
+                container.insertAdjacentHTML('beforeend', cardHtml);
+            });
+
+            setupNav();
+        }
+
+        function setupNav() {
+            document.querySelectorAll('.nav-item').forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+        }
+
+        window.onload = renderItinerary;
+    </script>
+</body>
+</html>
